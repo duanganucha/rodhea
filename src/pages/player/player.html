@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>      
+      <ion-icon name="logo-youtube"></ion-icon>
+       Youtube link</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card class="adv-map">
+
+    <div class="videowrapper">
+      <iframe [src]="updateVideoUrl(video.snippet)" frameborder="10" width="100%" height="250" allowscriptaccess="always" allowfullscreen="false"></iframe>
+    </div>
+   
+
+
+    <ion-item>
+      <ion-icon subtle large item-left name='logo-youtube' primary></ion-icon>
+      <ion-card-content>
+        <ion-card-title>
+          Channel : {{video.snippet.channelTitle}}
+        </ion-card-title>
+        <p>
+          {{video.snippet.publishedAt | date: 'd/M/yy, h:mm a' }}
+        </p>
+      </ion-card-content>
+    </ion-item>
+
+    <ion-card-content>
+      <p>
+        {{video.snippet.title}}
+      </p>
+    </ion-card-content>
+
+
+
+  </ion-card>
+
+  <ion-footer>
+      <ion-toolbar>
+
+           <button ion-button color="danger" block (click)="backButton()" icon-only>
+              <ion-icon name="rewind" ></ion-icon>
+              (Back) เลือก Video 
+          </button>
+      </ion-toolbar>
+    </ion-footer>
+
+
+</ion-content>

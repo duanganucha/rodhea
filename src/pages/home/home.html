@@ -1,14 +1,41 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
+
     <ion-title>
-      Ionic Blank
+      ลิ้งค์เพลงรถแห่
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content >
+  
+  
+
+  <ion-searchbar
+  [(ngModel)]="videoId"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="searchPlaylists($event)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
+
+  <div *ngFor="let item of playlists">
+    <ion-card class="adv-map" (click)="selectVideo($event, item)">
+      <div style="position: relative">
+        <div class="sixteen-nine">
+          <div class="content">
+            <img src="{{item.snippet.thumbnails.medium.url}}">
+          </div>
+        </div>
+
+      </div>
+      <ion-item style="padding-top: 5px;">
+        <ion-icon subtle large item-left name='disc' primary></ion-icon>
+        <h4 class="item-text-wrap">{{item.snippet.title}}</h4>
+      </ion-item>
+
+    </ion-card>
+  </div>
+
+  <button light>Load More...</button>
+
 </ion-content>
